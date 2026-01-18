@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { specialties } from '../data/specialties';
 import './UserProfile.css';
 
-export function UserProfile({ userNumber, onProfileChange }) {
+export function UserProfile({ userNumber, onProfileChange, onUploadClick }) {
     const [profile, setProfile] = useState({
         status: '',
         yearOfGraduation: '',
@@ -31,7 +31,17 @@ export function UserProfile({ userNumber, onProfileChange }) {
 
     return (
         <div className="user-profile-form">
-            <h3>User {userNumber} Profile</h3>
+            <div className="profile-header">
+                <h3>User {userNumber} Profile</h3>
+                {onUploadClick && (
+                    <button
+                        className="upload-plus-button"
+                        onClick={onUploadClick}
+                    >
+                        +
+                    </button>
+                )}
+            </div>
 
             <div className="form-two-columns">
                 <div className="form-column">

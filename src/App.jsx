@@ -5,6 +5,7 @@ import { searchHospitals, getAllHospitals } from './data/hospitals'
 import { calculateIndividualMatchProbability } from './utils/nrmpMatch'
 import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
+import { RankListUploader } from './components/RankListUploader'
 import { MatchResults } from './components/MatchResults'
 import './App.css'
 
@@ -31,6 +32,7 @@ function App() {
   // Individual Match state
   const [individualProfile, setIndividualProfile] = useState(null)
   const [individualResults, setIndividualResults] = useState(null)
+  const [individualRankList, setIndividualRankList] = useState([])
 
   const handleCalculate = () => {
     if (!specialty1 || !specialty2) {
@@ -83,6 +85,17 @@ function App() {
     }
   }
 
+  const handleFileUpload = (e, userNumber) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    // Show instructions for now - file processing will be added
+    alert(`File "${file.name}" selected. Please copy text from this file and paste it in the rank list text box below.`)
+
+    // Reset the input
+    e.target.value = ''
+  }
+
   function calculateIndividualMatchResults(profile) {
     if (!profile?.specialty) return
 
@@ -113,8 +126,48 @@ function App() {
       overallProbability: avgProbability,
       topHospitals: hospitalProbabilities.slice(0, 20), // Top 20 hospitals
       specialtyName: specialty.name,
-      profile
+      profile,
+      rankListProbabilities: individualRankList && individualRankList.length > 0
+        ? calculateRankListProbabilitiesForHospitals(profile, individualRankList, specialty.id)
+        : null
     })
+  }
+
+  function calculateRankListProbabilitiesForHospitals(profile, rankList, specialtyId) {
+    if (!profile || !rankList || rankList.length === 0) return null
+
+    return rankList.map(hospital => ({
+      hospital,
+      probability: (calculateIndividualMatchProbability(profile, hospital, specialtyId || profile.specialty) * 100).toFixed(1)
+    }))
+  }
+
+  function calculateRankListProbabilities(profile, rankList) {
+    if (!profile?.specialty || !rankList || rankList.length === 0) return
+
+    const specialty = specialties.find(s => s.id === profile.specialty || s.name === profile.specialty)
+    if (!specialty) {
+      // Try to find by name match
+      const specialtyByName = specialties.find(s =>
+        s.name.toLowerCase().includes(profile.specialty.toLowerCase()) ||
+        profile.specialty.toLowerCase().includes(s.name.toLowerCase())
+      )
+      if (!specialtyByName) return
+    }
+
+    const specialtyId = specialty?.id || profile.specialty
+
+    // Calculate match probability for each hospital in rank list
+    const rankListProbabilities = rankList.map(hospital => ({
+      hospital,
+      probability: (calculateIndividualMatchProbability(profile, hospital, specialtyId) * 100).toFixed(1)
+    }))
+
+    // Update results with rank list probabilities
+    setIndividualResults(prev => ({
+      ...prev,
+      rankListProbabilities
+    }))
   }
 
   return (
@@ -350,14 +403,34 @@ function App() {
                 <UserProfile
                   userNumber={1}
                   onProfileChange={(profile) => setUser1Profile(profile)}
+                  onUploadClick={() => document.getElementById('file-input-user-1')?.click()}
+                />
+                <input
+                  id="file-input-user-1"
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,application/pdf,image/*"
+                  onChange={(e) => handleFileUpload(e, 1)}
+                  className="file-input-hidden"
+                  style={{ display: 'none' }}
                 />
                 {user1Profile?.status && user1Profile?.yearOfGraduation &&
                   user1Profile?.step1Score && user1Profile?.specialty && (
-                    <RankListBuilder
-                      userNumber={1}
-                      specialty={user1Profile.specialty}
-                      onRankListChange={(list) => setUser1RankList(list)}
-                    />
+                    <>
+                      <RankListUploader
+                        userLabel="User 1"
+                        onRankListParsed={(hospitals) => {
+                          if (hospitals && hospitals.length > 0) {
+                            setUser1RankList(hospitals);
+                          }
+                        }}
+                        hideUploadButton={true}
+                      />
+                      <RankListBuilder
+                        userNumber={1}
+                        specialty={user1Profile.specialty}
+                        onRankListChange={(list) => setUser1RankList(list)}
+                      />
+                    </>
                   )}
               </div>
 
@@ -365,14 +438,34 @@ function App() {
                 <UserProfile
                   userNumber={2}
                   onProfileChange={(profile) => setUser2Profile(profile)}
+                  onUploadClick={() => document.getElementById('file-input-user-2')?.click()}
+                />
+                <input
+                  id="file-input-user-2"
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,application/pdf,image/*"
+                  onChange={(e) => handleFileUpload(e, 2)}
+                  className="file-input-hidden"
+                  style={{ display: 'none' }}
                 />
                 {user2Profile?.status && user2Profile?.yearOfGraduation &&
                   user2Profile?.step1Score && user2Profile?.specialty && (
-                    <RankListBuilder
-                      userNumber={2}
-                      specialty={user2Profile.specialty}
-                      onRankListChange={(list) => setUser2RankList(list)}
-                    />
+                    <>
+                      <RankListUploader
+                        userLabel="User 2"
+                        onRankListParsed={(hospitals) => {
+                          if (hospitals && hospitals.length > 0) {
+                            setUser2RankList(hospitals);
+                          }
+                        }}
+                        hideUploadButton={true}
+                      />
+                      <RankListBuilder
+                        userNumber={2}
+                        specialty={user2Profile.specialty}
+                        onRankListChange={(list) => setUser2RankList(list)}
+                      />
+                    </>
                   )}
               </div>
             </div>
@@ -415,7 +508,29 @@ function App() {
                     setIndividualResults(null)
                   }
                 }}
+                onUploadClick={() => document.getElementById('file-input-individual')?.click()}
               />
+              <input
+                id="file-input-individual"
+                type="file"
+                accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,application/pdf,image/*"
+                onChange={(e) => handleFileUpload(e, 'individual')}
+                className="file-input-hidden"
+                style={{ display: 'none' }}
+              />
+
+              {individualProfile?.specialty && (
+                <RankListUploader
+                  userLabel="Your"
+                  onRankListParsed={(hospitals) => {
+                    setIndividualRankList(hospitals)
+                    if (hospitals && hospitals.length > 0 && individualProfile) {
+                      calculateRankListProbabilities(individualProfile, hospitals)
+                    }
+                  }}
+                  hideUploadButton={true}
+                />
+              )}
             </div>
 
             {individualResults && (
@@ -431,7 +546,25 @@ function App() {
                       individualResults.profile.status === 'img' ? 'IMG' : 'FMG'} graduate applying to {individualResults.specialtyName}.
                 </div>
 
-                {individualResults.topHospitals && individualResults.topHospitals.length > 0 && (
+                {individualRankList && individualRankList.length > 0 && individualResults?.rankListProbabilities && (
+                  <div className="top-hospitals-container">
+                    <h3>Match Probabilities for Your Rank List</h3>
+                    <div className="hospitals-list">
+                      {individualResults.rankListProbabilities.map((item, index) => (
+                        <div key={item.hospital.id} className="hospital-item">
+                          <div className="hospital-rank">#{index + 1}</div>
+                          <div className="hospital-info">
+                            <div className="hospital-name">{item.hospital.name}</div>
+                            <div className="hospital-location">{item.hospital.location}</div>
+                          </div>
+                          <div className="hospital-probability">{item.probability}%</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {individualResults.topHospitals && individualResults.topHospitals.length > 0 && !individualRankList?.length && (
                   <div className="top-hospitals-container">
                     <h3>Top Hospitals by Match Probability</h3>
                     <div className="hospitals-list">

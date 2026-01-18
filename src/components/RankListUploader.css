@@ -1,0 +1,217 @@
+.rank-list-uploader {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+.rank-list-uploader h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.upload-instructions {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 3px solid #2DC2BD;
+}
+
+.upload-instructions p {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.upload-instructions ol {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #555;
+}
+
+.upload-instructions li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.instruction-note {
+    margin-top: 10px !important;
+    font-size: 0.85rem !important;
+    color: #666 !important;
+    font-style: italic;
+}
+
+.text-input-hint {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.file-note {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.upload-section {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed #e0e0e0;
+}
+
+.upload-section-label {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.upload-hint {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.file-upload-label {
+    display: block;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #C6D4FF;
+    color: #2DC2BD;
+    border: 2px solid #7A82AB;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.file-upload-button:hover {
+    background: #2DC2BD;
+    color: white;
+    border-color: #2DC2BD;
+}
+
+.file-info {
+    margin-top: 15px;
+    padding: 12px;
+    background: #e8f5e9;
+    border-left: 3px solid #4caf50;
+    border-radius: 6px;
+}
+
+.file-name {
+    display: block;
+    color: #2e7d32;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.text-input-section {
+    margin-bottom: 15px;
+}
+
+.text-input-section label {
+    display: block;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.text-input-area {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.text-input-area:focus {
+    outline: none;
+    border-color: #2DC2BD;
+    box-shadow: 0 0 0 2px rgba(45, 194, 189, 0.1);
+}
+
+.upload-error {
+    padding: 10px;
+    background: #f8d7da;
+    border-left: 3px solid #dc3545;
+    border-radius: 6px;
+    color: #721c24;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.upload-warning {
+    padding: 10px;
+    background: #fff3cd;
+    border-left: 3px solid #ffc107;
+    border-radius: 6px;
+    color: #856404;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.parsed-hospitals {
+    margin-top: 15px;
+}
+
+.parsed-hospitals h5 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.parsed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.parsed-hospital-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #12664F;
+    gap: 10px;
+}
+
+.parsed-rank {
+    font-weight: 700;
+    color: #307473;
+    min-width: 40px;
+}
+
+.parsed-name {
+    flex: 1;
+    font-weight: 600;
+    color: #333;
+}
+
+.parsed-location {
+    color: #666;
+    font-size: 0.9rem;
+}
