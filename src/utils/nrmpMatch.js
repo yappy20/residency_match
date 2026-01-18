@@ -49,13 +49,13 @@ export function calculateIndividualMatchProbability(profile, hospital, specialty
     const scoreMultiplier = (status === 'img' || status === 'fmg') ? 1.2 : 1.0;
 
     if (avgScore >= 250) {
-        probability += 0.25 * scoreMultiplier;
+        probability += 0.12 * scoreMultiplier; // Reduced from 0.25 to be more conservative
     } else if (avgScore >= 240) {
-        probability += 0.15 * scoreMultiplier;
+        probability += 0.06 * scoreMultiplier; // Reduced from 0.15 to be more conservative
     } else if (avgScore >= 230) {
-        probability += 0.05 * scoreMultiplier;
+        probability += 0.02 * scoreMultiplier; // Reduced from 0.05
     } else if (avgScore < 220) {
-        probability -= 0.20; // Low scores hurt more for IMGs/FMGs
+        probability -= 0.15; // Reduced from 0.20
     }
 
     // USCE (US Clinical Experience) is very valuable, especially for IMGs/FMGs
@@ -90,10 +90,10 @@ export function calculateIndividualMatchProbability(profile, hospital, specialty
     let hospitalTier = 'moderate';
     if (programSize >= 18) {
         hospitalTier = 'topTier';
-        probability -= 0.10; // Top tier is more competitive
+        probability -= 0.05; // Reduced from 0.10 to be more conservative
     } else if (programSize >= 12) {
         hospitalTier = 'highTier';
-        probability -= 0.05;
+        probability -= 0.02; // Reduced from 0.05
     }
 
     // Clamp between reasonable bounds

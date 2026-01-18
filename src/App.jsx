@@ -7,6 +7,7 @@ import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
 import { RankListUploader } from './components/RankListUploader'
 import { MatchResults } from './components/MatchResults'
+import { AccuracyTester } from './components/AccuracyTester'
 import './App.css'
 
 function App() {
@@ -393,6 +394,8 @@ function App() {
                 </div>
               </div>
             )}
+
+            <AccuracyTester />
           </>
         )}
 
@@ -493,6 +496,8 @@ function App() {
                   user2RankList={user2RankList}
                 />
               )}
+
+            <AccuracyTester />
           </div>
         )}
 
@@ -606,6 +611,8 @@ function App() {
                 </div>
               </div>
             )}
+
+            <AccuracyTester />
           </div>
         )}
       </div>

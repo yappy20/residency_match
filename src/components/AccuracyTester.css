@@ -137,3 +137,15 @@
     color: #333;
     font-weight: 600;
 }
+
+.test-category {
+    margin-bottom: 30px;
+}
+
+.test-category h4 {
+    color: #7A82AB;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #7A82AB;
+}
