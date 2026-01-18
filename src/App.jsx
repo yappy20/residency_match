@@ -187,6 +187,20 @@ function App() {
         </header>
 
         {/* Tab Navigation */}
+        {/* Mobile Dropdown */}
+        <div className="tab-dropdown-mobile">
+          <select
+            value={activeTab}
+            onChange={(e) => setActiveTab(e.target.value)}
+            className="tab-select"
+          >
+            <option value="simple">Couple Match Calculator</option>
+            <option value="nrmp">NRMP Couples Match Simulator</option>
+            <option value="individual">Individual Match Calculator</option>
+          </select>
+        </div>
+
+        {/* Desktop Tabs */}
         <div className="tab-navigation">
           <button
             className={`tab-btn ${activeTab === 'simple' ? 'active' : ''}`}
