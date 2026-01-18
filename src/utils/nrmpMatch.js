@@ -12,24 +12,26 @@ import { hospitalHasSpecialty } from './specialtyHelper';
  * Calculate match probability for a single applicant at a hospital
  * Based on board scores, experience, and hospital competitiveness
  */
-function calculateIndividualMatchProbability(profile, hospital, specialty) {
+export function calculateIndividualMatchProbability(profile, hospital, specialty) {
     if (!profile || !hospital || !specialty) return 0;
 
     // Base probability factors (varies by status/medical school type)
     const status = profile.status || 'us-md';
     let probability;
 
-    // IMG/FMG typically have lower base match rates
+    // Base match rates based on 2025 NRMP data (Medicine & Pediatric Specialties Match Report)
+    // MD Graduate: 89% match rate, DO Graduate: 78% match rate
+    // Foreign/U.S. Foreign rates vary by specialty but generally lower
     if (status === 'us-md') {
-        probability = 0.55; // Highest base rate
+        probability = 0.89; // 89% from 2025 NRMP data (4,096/4,618 MD graduates matched)
     } else if (status === 'us-do') {
-        probability = 0.50; // Slightly lower than US MD
+        probability = 0.78; // 78% from 2025 NRMP data (1,351/1,728 DO graduates matched)
     } else if (status === 'img') {
-        probability = 0.40; // IMGs face more challenges
+        probability = 0.45; // IMGs face more challenges (estimated based on "Foreign" category data)
     } else if (status === 'fmg') {
-        probability = 0.35; // FMGs face the most challenges
+        probability = 0.35; // FMGs face the most challenges (estimated)
     } else {
-        probability = 0.50;
+        probability = 0.79; // Overall average: 78.7% matched (8,526/10,840)
     }
 
     // ECFMG certification is critical for IMGs/FMGs
@@ -179,9 +181,40 @@ export function performCouplesMatch(user1Profile, user1RankList, user2Profile, u
     // Here we simulate based on probability
     const bestPair = pairs[0];
 
-    // Simulate match: if combined probability is high enough, they match
-    // This is a simplified model - real NRMP depends on program rank lists too
-    const matchThreshold = 0.3; // 30% combined probability threshold
+    // Calculate dynamic threshold based on 2025 NRMP couples match data (Table 14, Advance Data Tables)
+    // 2025 couples match statistics: 1,259 couples, 1,122 both matched (89.1%), 102 one matched, 35 neither matched
+    // Historical couples match rates: consistently 93-95% since 1987, 93.2% in 2025
+    // This means when couples coordinate rankings well, ~93% of couples achieve BOTH partners matching
+    // Individual match rates: MD 89%, DO 78%, Overall 78.7% (Medicine & Pediatric Specialties)
+    const status1 = user1Profile.status || 'us-md';
+    const status2 = user2Profile.status || 'us-md';
+
+    // Base thresholds adjusted for actual couples match outcomes from 2025 NRMP data
+    // The 93.2% couples match rate suggests our threshold should account for:
+    // - Coordinated ranking strategies (both rank hospitals with both specialties)
+    // - Real couples match success is higher than simple individual rate multiplication
+    let baseThreshold = 0.50; // Default 50% - conservative estimate
+
+    // Adjust threshold based on applicant types to reflect realistic couples match outcomes
+    // Note: Actual couples match data shows 89.1% both matched, suggesting thresholds may need
+    // to be lower for probability-based simulation, but should reflect coordinated ranking success
+    if ((status1 === 'us-md' && status2 === 'us-md') ||
+        (status1 === 'us-md' && status2 === 'us-do') ||
+        (status1 === 'us-do' && status2 === 'us-md')) {
+        // MD/MD or MD/DO couples: higher baseline (89% MD base rate)
+        // With coordinated ranking, couples match rate ~93%, so combined probability threshold
+        // should allow for this while accounting for individual modifiers
+        baseThreshold = 0.52; // 52% - slightly higher for stronger applicant combinations
+    } else if (status1 === 'us-do' && status2 === 'us-do') {
+        // DO/DO couples: moderate baseline (78% DO base rate)
+        baseThreshold = 0.48; // 48% - reflects DO match rates but couples match coordination
+    } else {
+        // IMG/FMG combinations: lower baseline rates, more variable outcomes
+        // Historical couples match data doesn't separate by applicant type, so conservative estimate
+        baseThreshold = 0.38; // 38% - accounts for lower IMG/FMG individual match rates
+    }
+
+    const matchThreshold = baseThreshold;
     const matched = bestPair.combinedProbability >= matchThreshold;
 
     if (matched) {

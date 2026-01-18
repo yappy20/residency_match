@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { specialties } from './data/specialties'
 import { calculateMatchProbability, getTopHospitals, calculateHospitalMatchProbability } from './utils/calculateMatch'
-import { searchHospitals } from './data/hospitals'
+import { searchHospitals, getAllHospitals } from './data/hospitals'
+import { calculateIndividualMatchProbability } from './utils/nrmpMatch'
 import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
 import { MatchResults } from './components/MatchResults'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('simple') // 'simple' or 'nrmp'
+  const [activeTab, setActiveTab] = useState('simple') // 'simple', 'nrmp', or 'individual'
 
-  // Simple calculator state
+  // Couple match calculator state
   const [specialty1, setSpecialty1] = useState('')
   const [specialty2, setSpecialty2] = useState('')
   const [result, setResult] = useState(null)
@@ -26,6 +27,10 @@ function App() {
   const [user1RankList, setUser1RankList] = useState([])
   const [user2Profile, setUser2Profile] = useState(null)
   const [user2RankList, setUser2RankList] = useState([])
+
+  // Individual Match state
+  const [individualProfile, setIndividualProfile] = useState(null)
+  const [individualResults, setIndividualResults] = useState(null)
 
   const handleCalculate = () => {
     if (!specialty1 || !specialty2) {
@@ -78,6 +83,40 @@ function App() {
     }
   }
 
+  function calculateIndividualMatchResults(profile) {
+    if (!profile?.specialty) return
+
+    const specialty = specialties.find(s => s.id === profile.specialty)
+    if (!specialty) return
+
+    // Get all hospitals that offer this specialty
+    const allHospitals = getAllHospitals()
+    const hospitalsWithSpecialty = allHospitals.filter(h =>
+      h.specialties.includes(profile.specialty)
+    )
+
+    // Calculate match probability for each hospital
+    const hospitalProbabilities = hospitalsWithSpecialty.map(hospital => ({
+      hospital,
+      probability: (calculateIndividualMatchProbability(profile, hospital, profile.specialty) * 100).toFixed(1)
+    }))
+
+    // Sort by probability (highest first)
+    hospitalProbabilities.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability))
+
+    // Calculate overall average probability
+    const avgProbability = hospitalProbabilities.length > 0
+      ? (hospitalProbabilities.reduce((sum, item) => sum + parseFloat(item.probability), 0) / hospitalProbabilities.length).toFixed(1)
+      : 0
+
+    setIndividualResults({
+      overallProbability: avgProbability,
+      topHospitals: hospitalProbabilities.slice(0, 20), // Top 20 hospitals
+      specialtyName: specialty.name,
+      profile
+    })
+  }
+
   return (
     <div className="app">
       <div className="container">
@@ -100,7 +139,7 @@ function App() {
             className={`tab-btn ${activeTab === 'simple' ? 'active' : ''}`}
             onClick={() => setActiveTab('simple')}
           >
-            Simple Calculator
+            Couple Match Calculator
           </button>
           <button
             className={`tab-btn ${activeTab === 'nrmp' ? 'active' : ''}`}
@@ -108,9 +147,15 @@ function App() {
           >
             NRMP Couples Match Simulator
           </button>
+          <button
+            className={`tab-btn ${activeTab === 'individual' ? 'active' : ''}`}
+            onClick={() => setActiveTab('individual')}
+          >
+            Individual Match Calculator
+          </button>
         </div>
 
-        {/* Simple Calculator Tab */}
+        {/* Couple Match Calculator Tab */}
         {activeTab === 'simple' && (
           <>
             <div className="form-container">
@@ -341,6 +386,79 @@ function App() {
                   user2RankList={user2RankList}
                 />
               )}
+          </div>
+        )}
+
+        {/* Individual Match Calculator Tab */}
+        {activeTab === 'individual' && (
+          <div className="nrmp-match-container">
+            <div className="nrmp-intro">
+              <h2>Individual Match Calculator</h2>
+              <p>
+                Calculate your individual match probability based on your profile, board scores, experience,
+                and medical school type. See your match probability at different hospitals for your selected specialty.
+              </p>
+              <p className="intro-note">
+                Based on 2025 NRMP data: MD graduates 89% match rate, DO graduates 78% match rate.
+                Individual match probabilities are adjusted based on your profile factors.
+              </p>
+            </div>
+
+            <div className="user-section">
+              <UserProfile
+                userNumber={1}
+                onProfileChange={(profile) => {
+                  setIndividualProfile(profile)
+                  if (profile?.specialty && profile?.status && profile?.yearOfGraduation && profile?.step1Score) {
+                    calculateIndividualMatchResults(profile)
+                  } else {
+                    setIndividualResults(null)
+                  }
+                }}
+              />
+            </div>
+
+            {individualResults && (
+              <div className="result-container">
+                <div className="probability-display">
+                  <div className="probability-value">{individualResults.overallProbability}%</div>
+                  <div className="probability-label">Overall Match Probability</div>
+                </div>
+
+                <div className="result-message">
+                  Based on your profile as a {individualResults.profile.status === 'us-md' ? 'US MD' :
+                    individualResults.profile.status === 'us-do' ? 'US DO' :
+                      individualResults.profile.status === 'img' ? 'IMG' : 'FMG'} graduate applying to {individualResults.specialtyName}.
+                </div>
+
+                {individualResults.topHospitals && individualResults.topHospitals.length > 0 && (
+                  <div className="top-hospitals-container">
+                    <h3>Top Hospitals by Match Probability</h3>
+                    <div className="hospitals-list">
+                      {individualResults.topHospitals.map((item, index) => (
+                        <div key={item.hospital.id} className="hospital-item">
+                          <div className="hospital-rank">#{index + 1}</div>
+                          <div className="hospital-info">
+                            <div className="hospital-name">{item.hospital.name}</div>
+                            <div className="hospital-location">{item.hospital.location}</div>
+                          </div>
+                          <div className="hospital-probability">{item.probability}%</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="disclaimer">
+                  <p>
+                    <strong>Disclaimer:</strong> This calculator uses 2025 NRMP match data and accounts for crucial variables
+                    in residency applications including board scores, medical school type, experience, and hospital competitiveness.
+                    Results are estimates and actual match probability depends on many additional factors including program rank lists,
+                    interview performance, and program-specific preferences.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
