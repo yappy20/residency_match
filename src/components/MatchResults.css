@@ -1,0 +1,307 @@
+.match-results {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.match-results h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.match-status {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.match-status.matched {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 3px solid #28a745;
+}
+
+.match-status.not-matched {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 3px solid #dc3545;
+}
+
+.match-icon {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.match-status.matched .match-icon {
+    color: #28a745;
+}
+
+.match-status.not-matched .match-icon {
+    color: #dc3545;
+}
+
+.match-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.match-status.matched .match-title {
+    color: #155724;
+}
+
+.match-status.not-matched .match-title {
+    color: #721c24;
+}
+
+.match-message {
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+.match-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.match-detail-card {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #12664F;
+}
+
+.match-detail-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.hospital-match {
+    text-align: center;
+}
+
+.hospital-name-large {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.hospital-location-large {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.match-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+}
+
+.stat-label {
+    color: #666;
+    font-weight: 500;
+}
+
+.stat-value {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.combined-probability {
+    grid-column: 1 / -1;
+    padding: 25px;
+    background: linear-gradient(135deg, #2DC2BD 0%, #307473 100%);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.prob-label {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.prob-value {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.top-pairs-section {
+    margin-top: 30px;
+}
+
+.top-pairs-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.pairs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pair-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #7A82AB;
+    transition: all 0.3s ease;
+}
+
+.pair-item.matched-pair {
+    background: #d4edda;
+    border-color: #28a745;
+}
+
+.pair-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pair-rank {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #307473;
+    min-width: 60px;
+    text-align: center;
+}
+
+.pair-hospitals {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 20px;
+}
+
+.pair-hospital {
+    flex: 1;
+}
+
+.pair-hospital-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.pair-hospital-location {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.pair-rank-info {
+    font-size: 0.85rem;
+    color: #307473;
+    font-weight: 600;
+}
+
+.pair-connector {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #307473;
+}
+
+.pair-probability {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #307473;
+    min-width: 80px;
+    text-align: right;
+}
+
+.best-pair-section {
+    margin-top: 30px;
+    padding: 25px;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 10px;
+}
+
+.best-pair-section h3 {
+    color: #856404;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.best-pair-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.best-pair-hospital {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+}
+
+.best-pair-connector {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #856404;
+}
+
+.best-pair-probability {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #856404;
+}
+
+@media (max-width: 768px) {
+    .match-details {
+        grid-template-columns: 1fr;
+    }
+
+    .pair-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pair-rank {
+        margin-bottom: 10px;
+    }
+
+    .pair-hospitals {
+        margin-left: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .pair-connector {
+        transform: rotate(90deg);
+    }
+
+    .pair-probability {
+        align-self: flex-end;
+        margin-top: 10px;
+    }
+}

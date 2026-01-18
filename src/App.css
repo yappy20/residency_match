@@ -1,0 +1,567 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: #2DC2BD;
+  background: #C6D4FF;
+}
+
+.tab-btn.active {
+  color: #2DC2BD;
+  border-bottom-color: #2DC2BD;
+  background: #C6D4FF;
+}
+
+/* NRMP Match Container */
+.nrmp-match-container {
+  margin-top: 20px;
+}
+
+.nrmp-intro {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 3px solid #7A82AB;
+}
+
+.nrmp-intro h2 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+}
+
+.nrmp-intro p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin: 0 0 10px 0;
+}
+
+.intro-note {
+  color: #856404;
+  background: #fff3cd;
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #ffc107;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.users-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.user-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .users-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
+  width: 100%;
+  padding: 25px;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #2DC2BD 0%, #307473 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.subtitle-note {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.form-container {
+  margin-bottom: 40px;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.select-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.select-input[type="text"] {
+  cursor: text;
+}
+
+.select-input:not([type="text"]) {
+  cursor: pointer;
+}
+
+.select-input:hover {
+  border-color: #7A82AB;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: #2DC2BD;
+  box-shadow: 0 0 0 3px rgba(45, 194, 189, 0.1);
+}
+
+.calculate-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2DC2BD 0%, #307473 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.calculate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(45, 194, 189, 0.3);
+}
+
+.calculate-btn:active {
+  transform: translateY(0);
+}
+
+.result-container {
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.probability-display {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.probability-value {
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2DC2BD 0%, #307473 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.probability-label {
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.result-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  border-left: 4px solid #7A82AB;
+}
+
+.details-container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.details-container h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.disclaimer {
+  padding: 15px;
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+}
+
+.disclaimer p {
+  margin: 0;
+  color: #856404;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Top Hospitals List */
+.top-hospitals-container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.top-hospitals-container h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.hospitals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hospital-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #12664F;
+  transition: all 0.3s ease;
+}
+
+.hospital-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.hospital-rank {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #307473;
+  min-width: 50px;
+  text-align: center;
+}
+
+.hospital-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.hospital-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.hospital-location {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.hospital-probability {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #307473;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Hospital Search */
+.hospital-search-container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.toggle-search-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2DC2BD;
+  background: #f0f0f0;
+  border: 2px solid #12664F;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.toggle-search-btn:hover {
+  background: #2DC2BD;
+  color: white;
+}
+
+.hospital-search-form {
+  margin-top: 20px;
+  position: relative;
+}
+
+.hospital-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  margin-top: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.hospital-suggestion-item:hover {
+  background: #f8f9fa;
+}
+
+.hospital-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.hospital-suggestion-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.hospital-suggestion-location {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.search-hospital-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2DC2BD 0%, #307473 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.search-hospital-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(45, 194, 189, 0.3);
+}
+
+/* Hospital Result */
+.hospital-result-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #C6D4FF 0%, #E8F0FF 100%);
+  border-radius: 10px;
+  border: 2px solid #307473;
+}
+
+.hospital-probability-display {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.hospital-probability-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #307473;
+  margin-bottom: 5px;
+}
+
+.hospital-probability-label {
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.hospital-result-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.hospital-details {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .probability-value {
+    font-size: 3rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hospital-rank {
+    margin-bottom: 10px;
+  }
+
+  .hospital-info {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .hospital-probability {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  .hospital-probability-value {
+    font-size: 2.5rem;
+  }
+}
