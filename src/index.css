@@ -12,7 +12,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #C6D4FF;
   min-height: 100vh;
-  padding: 20px;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
 }
 
 code {

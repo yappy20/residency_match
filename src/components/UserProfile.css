@@ -1,9 +1,15 @@
 .user-profile-form {
     background: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
     border: 1px solid #e0e0e0;
+}
+
+@media (min-width: 768px) {
+    .user-profile-form {
+        padding: 20px;
+    }
 }
 
 .profile-header {
@@ -92,14 +98,25 @@
 
 .form-two-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .form-column {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 15px;
+}
+
+@media (min-width: 900px) {
+    .form-two-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .form-column {
+        gap: 18px;
+    }
 }
 
 .form-field {
@@ -151,13 +168,19 @@ select.form-input {
     padding-right: 35px;
 }
 
-@media (max-width: 900px) {
+/* Mobile-first: single column by default */
+.form-two-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 900px) {
     .form-two-columns {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
 
     .form-column {
-        gap: 15px;
+        gap: 18px;
     }
 }

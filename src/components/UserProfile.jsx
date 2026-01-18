@@ -132,7 +132,7 @@ export function UserProfile({ userNumber, onProfileChange, onUploadClick }) {
                     </div>
 
                     <div className="form-field">
-                        <label>NUMBER OF US LETTERS OF RECOMMENDATION</label>
+                        <label>NUMBER OF LETTERS OF RECOMMENDATION</label>
                         <input
                             type="number"
                             min="0"
