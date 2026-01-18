@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { specialties } from './data/specialties'
 import { calculateMatchProbability, getTopHospitals, calculateHospitalMatchProbability } from './utils/calculateMatch'
 import { searchHospitals } from './data/hospitals'
-import { AccuracyTester } from './components/AccuracyTester'
 import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
 import { MatchResults } from './components/MatchResults'
@@ -282,10 +281,6 @@ function App() {
                 </div>
               </div>
             )}
-
-            <div style={{ marginTop: '30px' }}>
-              <AccuracyTester />
-            </div>
           </>
         )}
 
