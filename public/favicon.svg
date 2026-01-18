@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="103.647" height="129.59"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M101.647 23.888c-.267 75.713-21.274 98.674-49.824 103.7C23.274 122.562 2.272 99.6 2 23.888 36.205 28.192 51.823 2 51.823 2s15.624 26.192 49.824 21.888z"/><path d="M65.385 59.108H57.51v-7.874H46.136v7.874h-7.874v11.374h7.874v7.874H57.51v-7.874h7.875V59.108z"/><circle cx="51.823" cy="64.795" r="28.316"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="103.647" height="129.59" viewBox="0 0 103.647 129.59">
+  <g>
+    <path d="M101.647,23.888c-.267,75.713-21.274,98.674-49.824,103.7C23.274,122.562,2.272,99.6,2,23.888,36.205,28.192,51.823,2,51.823,2S67.447,28.192,101.647,23.888Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polygon points="65.385 59.108 57.51 59.108 57.51 51.234 46.136 51.234 46.136 59.108 38.262 59.108 38.262 70.482 46.136 70.482 46.136 78.356 57.51 78.356 57.51 70.482 65.385 70.482 65.385 59.108" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <circle cx="51.823" cy="64.795" r="28.316" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+</svg>
