@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Hospital Building -->
-  <rect x="20" y="40" width="60" height="50" fill="#307473" rx="2"/>
-  <rect x="15" y="35" width="70" height="5" fill="#12664F"/>
-  
-  <!-- Medical Cross Symbol -->
-  <rect x="42" y="45" width="16" height="40" fill="#2DC2BD"/>
-  <rect x="35" y="58" width="30" height="14" fill="#2DC2BD"/>
-  
-  <!-- Windows -->
-  <circle cx="32" cy="68" r="3" fill="#C6D4FF"/>
-  <circle cx="68" cy="68" r="3" fill="#C6D4FF"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="103.647" height="129.59"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M101.647 23.888c-.267 75.713-21.274 98.674-49.824 103.7C23.274 122.562 2.272 99.6 2 23.888 36.205 28.192 51.823 2 51.823 2s15.624 26.192 49.824 21.888z"/><path d="M65.385 59.108H57.51v-7.874H46.136v7.874h-7.874v11.374h7.874v7.874H57.51v-7.874h7.875V59.108z"/><circle cx="51.823" cy="64.795" r="28.316"/></g></svg>
