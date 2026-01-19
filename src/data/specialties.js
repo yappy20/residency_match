@@ -1,6 +1,8 @@
 // Specialty data with approximate statistics
 // Based on NRMP Match data and hospital distribution
+// Includes all ABMS primary specialties and common subspecialties/combined programs
 export const specialties = [
+  // Primary Specialties (ABMS recognized)
   { id: 'internal-medicine', name: 'Internal Medicine', popularity: 0.15, hospitalCount: 450 },
   { id: 'family-medicine', name: 'Family Medicine', popularity: 0.12, hospitalCount: 480 },
   { id: 'pediatrics', name: 'Pediatrics', popularity: 0.10, hospitalCount: 220 },
@@ -21,6 +23,102 @@ export const specialties = [
   { id: 'pathology', name: 'Pathology', popularity: 0.03, hospitalCount: 150 },
   { id: 'pmr', name: 'Physical Medicine & Rehab', popularity: 0.03, hospitalCount: 90 },
   { id: 'radiation-oncology', name: 'Radiation Oncology', popularity: 0.02, hospitalCount: 90 },
+  { id: 'colon-rectal-surgery', name: 'Colon and Rectal Surgery', popularity: 0.01, hospitalCount: 60 },
+  { id: 'thoracic-surgery', name: 'Thoracic Surgery', popularity: 0.01, hospitalCount: 80 },
+  { id: 'vascular-surgery', name: 'Vascular Surgery', popularity: 0.015, hospitalCount: 120 },
+  { id: 'nuclear-medicine', name: 'Nuclear Medicine', popularity: 0.01, hospitalCount: 70 },
+  { id: 'medical-genetics', name: 'Medical Genetics and Genomics', popularity: 0.005, hospitalCount: 40 },
+  { id: 'preventive-medicine', name: 'Preventive Medicine', popularity: 0.01, hospitalCount: 50 },
+  
+  // Combined Programs
+  { id: 'internal-medicine-pediatrics', name: 'Internal Medicine-Pediatrics', popularity: 0.02, hospitalCount: 100 },
+  { id: 'emergency-medicine-family-medicine', name: 'Emergency Medicine-Family Medicine', popularity: 0.005, hospitalCount: 20 },
+  { id: 'triple-board', name: 'Triple Board (Pediatrics/Psychiatry/Child Psychiatry)', popularity: 0.002, hospitalCount: 15 },
+  
+  // Internal Medicine Subspecialties
+  { id: 'cardiology', name: 'Cardiology', popularity: 0.03, hospitalCount: 200 },
+  { id: 'gastroenterology', name: 'Gastroenterology', popularity: 0.025, hospitalCount: 180 },
+  { id: 'pulmonary-critical-care', name: 'Pulmonary and Critical Care Medicine', popularity: 0.02, hospitalCount: 160 },
+  { id: 'nephrology', name: 'Nephrology', popularity: 0.015, hospitalCount: 140 },
+  { id: 'hematology-oncology', name: 'Hematology and Oncology', popularity: 0.02, hospitalCount: 150 },
+  { id: 'endocrinology', name: 'Endocrinology', popularity: 0.015, hospitalCount: 130 },
+  { id: 'rheumatology', name: 'Rheumatology', popularity: 0.01, hospitalCount: 110 },
+  { id: 'infectious-disease', name: 'Infectious Disease', popularity: 0.015, hospitalCount: 140 },
+  { id: 'allergy-immunology', name: 'Allergy and Immunology', popularity: 0.01, hospitalCount: 100 },
+  { id: 'geriatric-medicine', name: 'Geriatric Medicine', popularity: 0.01, hospitalCount: 90 },
+  { id: 'sports-medicine-im', name: 'Sports Medicine (Internal Medicine)', popularity: 0.005, hospitalCount: 60 },
+  { id: 'sleep-medicine-im', name: 'Sleep Medicine (Internal Medicine)', popularity: 0.005, hospitalCount: 70 },
+  { id: 'critical-care-medicine', name: 'Critical Care Medicine', popularity: 0.015, hospitalCount: 150 },
+  { id: 'interventional-cardiology', name: 'Interventional Cardiology', popularity: 0.015, hospitalCount: 120 },
+  { id: 'cardiac-electrophysiology', name: 'Clinical Cardiac Electrophysiology', popularity: 0.01, hospitalCount: 100 },
+  { id: 'heart-failure-transplant', name: 'Advanced Heart Failure and Transplant Cardiology', popularity: 0.005, hospitalCount: 50 },
+  { id: 'transplant-hepatology', name: 'Transplant Hepatology', popularity: 0.005, hospitalCount: 40 },
+  
+  // Pediatrics Subspecialties
+  { id: 'pediatric-cardiology', name: 'Pediatric Cardiology', popularity: 0.015, hospitalCount: 90 },
+  { id: 'pediatric-critical-care', name: 'Pediatric Critical Care Medicine', popularity: 0.01, hospitalCount: 100 },
+  { id: 'pediatric-emergency-medicine', name: 'Pediatric Emergency Medicine', popularity: 0.015, hospitalCount: 110 },
+  { id: 'pediatric-endocrinology', name: 'Pediatric Endocrinology', popularity: 0.01, hospitalCount: 80 },
+  { id: 'pediatric-gastroenterology', name: 'Pediatric Gastroenterology', popularity: 0.01, hospitalCount: 85 },
+  { id: 'pediatric-hematology-oncology', name: 'Pediatric Hematology-Oncology', popularity: 0.01, hospitalCount: 90 },
+  { id: 'pediatric-infectious-disease', name: 'Pediatric Infectious Diseases', popularity: 0.008, hospitalCount: 75 },
+  { id: 'pediatric-nephrology', name: 'Pediatric Nephrology', popularity: 0.008, hospitalCount: 70 },
+  { id: 'pediatric-pulmonology', name: 'Pediatric Pulmonology', popularity: 0.008, hospitalCount: 75 },
+  { id: 'pediatric-rheumatology', name: 'Pediatric Rheumatology', popularity: 0.005, hospitalCount: 60 },
+  { id: 'neonatology', name: 'Neonatology', popularity: 0.015, hospitalCount: 120 },
+  { id: 'child-neurology', name: 'Child Neurology', popularity: 0.01, hospitalCount: 80 },
+  { id: 'pediatric-surgery', name: 'Pediatric Surgery', popularity: 0.01, hospitalCount: 70 },
+  { id: 'pediatric-anesthesiology', name: 'Pediatric Anesthesiology', popularity: 0.008, hospitalCount: 60 },
+  
+  // Surgery Subspecialties
+  { id: 'trauma-surgery', name: 'Trauma Surgery', popularity: 0.015, hospitalCount: 130 },
+  { id: 'surgical-critical-care', name: 'Surgical Critical Care', popularity: 0.01, hospitalCount: 100 },
+  { id: 'surgical-oncology', name: 'Surgical Oncology', popularity: 0.01, hospitalCount: 90 },
+  { id: 'cardiothoracic-surgery', name: 'Cardiothoracic Surgery', popularity: 0.015, hospitalCount: 110 },
+  { id: 'vascular-surgery-independent', name: 'Vascular Surgery (Independent)', popularity: 0.01, hospitalCount: 100 },
+  { id: 'surgical-transplantation', name: 'Transplant Surgery', popularity: 0.008, hospitalCount: 70 },
+  
+  // Obstetrics & Gynecology Subspecialties
+  { id: 'maternal-fetal-medicine', name: 'Maternal-Fetal Medicine', popularity: 0.015, hospitalCount: 120 },
+  { id: 'reproductive-endocrinology', name: 'Reproductive Endocrinology and Infertility', popularity: 0.01, hospitalCount: 90 },
+  { id: 'gynecologic-oncology', name: 'Gynecologic Oncology', popularity: 0.01, hospitalCount: 85 },
+  { id: 'female-pelvic-medicine', name: 'Female Pelvic Medicine and Reconstructive Surgery', popularity: 0.005, hospitalCount: 60 },
+  
+  // Psychiatry Subspecialties
+  { id: 'child-adolescent-psychiatry', name: 'Child and Adolescent Psychiatry', popularity: 0.015, hospitalCount: 110 },
+  { id: 'geriatric-psychiatry', name: 'Geriatric Psychiatry', popularity: 0.008, hospitalCount: 80 },
+  { id: 'addiction-psychiatry', name: 'Addiction Psychiatry', popularity: 0.01, hospitalCount: 90 },
+  { id: 'forensic-psychiatry', name: 'Forensic Psychiatry', popularity: 0.005, hospitalCount: 40 },
+  { id: 'consultation-liaison-psychiatry', name: 'Consultation-Liaison Psychiatry', popularity: 0.008, hospitalCount: 70 },
+  
+  // Radiology Subspecialties
+  { id: 'interventional-radiology', name: 'Interventional Radiology', popularity: 0.015, hospitalCount: 110 },
+  { id: 'neuroradiology', name: 'Neuroradiology', popularity: 0.01, hospitalCount: 90 },
+  { id: 'pediatric-radiology', name: 'Pediatric Radiology', popularity: 0.008, hospitalCount: 70 },
+  { id: 'nuclear-radiology', name: 'Nuclear Radiology', popularity: 0.005, hospitalCount: 50 },
+  
+  // Pathology Subspecialties
+  { id: 'blood-banking', name: 'Blood Banking/Transfusion Medicine', popularity: 0.005, hospitalCount: 60 },
+  { id: 'forensic-pathology', name: 'Forensic Pathology', popularity: 0.005, hospitalCount: 50 },
+  { id: 'dermatopathology', name: 'Dermatopathology', popularity: 0.008, hospitalCount: 70 },
+  { id: 'neuropathology', name: 'Neuropathology', popularity: 0.005, hospitalCount: 50 },
+  { id: 'pediatric-pathology', name: 'Pediatric Pathology', popularity: 0.005, hospitalCount: 55 },
+  
+  // Emergency Medicine Subspecialties
+  { id: 'emergency-medical-services', name: 'Emergency Medical Services', popularity: 0.005, hospitalCount: 40 },
+  { id: 'medical-toxicology', name: 'Medical Toxicology', popularity: 0.005, hospitalCount: 50 },
+  { id: 'sports-medicine-em', name: 'Sports Medicine (Emergency Medicine)', popularity: 0.005, hospitalCount: 45 },
+  { id: 'ultrasound-em', name: 'Emergency Ultrasound', popularity: 0.005, hospitalCount: 60 },
+  
+  // Other Specialties
+  { id: 'pain-medicine', name: 'Pain Medicine', popularity: 0.015, hospitalCount: 120 },
+  { id: 'hospice-palliative-medicine', name: 'Hospice and Palliative Medicine', popularity: 0.01, hospitalCount: 100 },
+  { id: 'sleep-medicine', name: 'Sleep Medicine', popularity: 0.008, hospitalCount: 80 },
+  { id: 'sports-medicine-pmr', name: 'Sports Medicine (PM&R)', popularity: 0.008, hospitalCount: 70 },
+  { id: 'brain-injury-medicine', name: 'Brain Injury Medicine', popularity: 0.005, hospitalCount: 60 },
+  { id: 'neuromuscular-medicine', name: 'Neuromuscular Medicine', popularity: 0.005, hospitalCount: 55 },
+  { id: 'spine-medicine', name: 'Spinal Cord Injury Medicine', popularity: 0.005, hospitalCount: 50 },
+  { id: 'pediatric-rehabilitation', name: 'Pediatric Rehabilitation Medicine', popularity: 0.005, hospitalCount: 55 },
 ];
 
 // Correlation matrix: likelihood of two specialties being at the same hospital

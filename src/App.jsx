@@ -7,7 +7,6 @@ import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
 import { RankListUploader } from './components/RankListUploader'
 import { MatchResults } from './components/MatchResults'
-import { AccuracyTester } from './components/AccuracyTester'
 import './App.css'
 
 function App() {
@@ -123,11 +122,36 @@ function App() {
       ? (hospitalProbabilities.reduce((sum, item) => sum + parseFloat(item.probability), 0) / hospitalProbabilities.length).toFixed(1)
       : 0
 
+    // Calculate preferred hospital probability if provided
+    let preferredHospitalResult = null
+    if (profile.preferredHospital) {
+      const preferredHospital = allHospitals.find(h => 
+        h.name.toLowerCase() === profile.preferredHospital.toLowerCase()
+      )
+      if (preferredHospital) {
+        const hasSpecialty = preferredHospital.specialties.includes(profile.specialty)
+        if (hasSpecialty) {
+          const probability = calculateIndividualMatchProbability(profile, preferredHospital, profile.specialty)
+          preferredHospitalResult = {
+            hospital: preferredHospital,
+            probability: (probability * 100).toFixed(1)
+          }
+        } else {
+          preferredHospitalResult = {
+            hospital: preferredHospital,
+            probability: 0,
+            message: 'This hospital does not offer your selected specialty'
+          }
+        }
+      }
+    }
+
     setIndividualResults({
       overallProbability: avgProbability,
       topHospitals: hospitalProbabilities.slice(0, 20), // Top 20 hospitals
       specialtyName: specialty.name,
       profile,
+      preferredHospitalResult,
       rankListProbabilities: individualRankList && individualRankList.length > 0
         ? calculateRankListProbabilitiesForHospitals(profile, individualRankList, specialty.id)
         : null
@@ -394,8 +418,6 @@ function App() {
                 </div>
               </div>
             )}
-
-            <AccuracyTester />
           </>
         )}
 
@@ -496,8 +518,6 @@ function App() {
                   user2RankList={user2RankList}
                 />
               )}
-
-            <AccuracyTester />
           </div>
         )}
 
@@ -565,6 +585,24 @@ function App() {
                       individualResults.profile.status === 'img' ? 'IMG' : 'FMG'} graduate applying to {individualResults.specialtyName}.
                 </div>
 
+                {individualResults.preferredHospitalResult && (
+                  <div className="preferred-hospital-container">
+                    <h3>Match Probability at Your Preferred Hospital</h3>
+                    <div className="preferred-hospital-result">
+                      <div className="preferred-hospital-name">{individualResults.preferredHospitalResult.hospital.name}</div>
+                      <div className="preferred-hospital-location">{individualResults.preferredHospitalResult.hospital.location}</div>
+                      {individualResults.preferredHospitalResult.message ? (
+                        <div className="preferred-hospital-message">{individualResults.preferredHospitalResult.message}</div>
+                      ) : (
+                        <div className="preferred-hospital-probability">
+                          <span className="prob-value">{individualResults.preferredHospitalResult.probability}%</span>
+                          <span className="prob-label">Match Probability</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 {individualRankList && individualRankList.length > 0 && individualResults?.rankListProbabilities && (
                   <div className="top-hospitals-container">
                     <h3>Match Probabilities for Your Rank List</h3>
@@ -611,8 +649,6 @@ function App() {
                 </div>
               </div>
             )}
-
-            <AccuracyTester />
           </div>
         )}
       </div>
