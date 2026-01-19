@@ -7,6 +7,7 @@
  */
 
 import { hospitalHasSpecialty } from './specialtyHelper';
+import { OVERALL_STATISTICS_2025, getSpecialtyMatchRate } from '../data/nrmpData2025';
 
 /**
  * Calculate match probability for a single applicant at a hospital
@@ -20,18 +21,32 @@ export function calculateIndividualMatchProbability(profile, hospital, specialty
     let probability;
 
     // Base match rates based on 2025 NRMP data (Medicine & Pediatric Specialties Match Report)
-    // MD Graduate: 89% match rate, DO Graduate: 78% match rate
-    // Foreign/U.S. Foreign rates vary by specialty but generally lower
-    if (status === 'us-md') {
-        probability = 0.89; // 89% from 2025 NRMP data (4,096/4,618 MD graduates matched)
-    } else if (status === 'us-do') {
-        probability = 0.78; // 78% from 2025 NRMP data (1,351/1,728 DO graduates matched)
-    } else if (status === 'img') {
-        probability = 0.45; // IMGs face more challenges (estimated based on "Foreign" category data)
-    } else if (status === 'fmg') {
-        probability = 0.35; // FMGs face the most challenges (estimated)
+    // Use specialty-specific rates if available, otherwise fall back to overall rates
+    // Handle specialty as either string ID or object with id property
+    const specialtyId = typeof specialty === 'string' ? specialty : (specialty?.id || profile.specialty);
+    let specialtyMatchRate = null;
+    try {
+        specialtyMatchRate = specialtyId ? getSpecialtyMatchRate(specialtyId, status) : null;
+    } catch (e) {
+        // If getSpecialtyMatchRate fails (e.g., data not populated yet), use fallback
+        specialtyMatchRate = null;
+    }
+
+    if (specialtyMatchRate) {
+        probability = specialtyMatchRate;
     } else {
-        probability = 0.79; // Overall average: 78.7% matched (8,526/10,840)
+        // Fallback to overall 2025 NRMP data
+        if (status === 'us-md') {
+            probability = OVERALL_STATISTICS_2025.usMd.rate; // 88.6% from 2025 NRMP data
+        } else if (status === 'us-do') {
+            probability = OVERALL_STATISTICS_2025.usDo.rate; // 78.2% from 2025 NRMP data
+        } else if (status === 'img') {
+            probability = OVERALL_STATISTICS_2025.img.rate; // 68.4% for U.S. IMGs (from Impact-Data_2025.pdf)
+        } else if (status === 'fmg') {
+            probability = OVERALL_STATISTICS_2025.fmg.rate; // 58.3% for Non-U.S. IMGs (from Impact-Data_2025.pdf)
+        } else {
+            probability = OVERALL_STATISTICS_2025.overall.rate; // 78.7% overall
+        }
     }
 
     // ECFMG certification is critical for IMGs/FMGs
@@ -185,7 +200,7 @@ export function performCouplesMatch(user1Profile, user1RankList, user2Profile, u
     // 2025 couples match statistics: 1,259 couples, 1,122 both matched (89.1%), 102 one matched, 35 neither matched
     // Historical couples match rates: consistently 93-95% since 1987, 93.2% in 2025
     // This means when couples coordinate rankings well, ~93% of couples achieve BOTH partners matching
-    // Individual match rates: MD 89%, DO 78%, Overall 78.7% (Medicine & Pediatric Specialties)
+    // Individual match rates: MD 88.6%, DO 78.2%, Overall 78.7% (Medicine & Pediatric Specialties)
     const status1 = user1Profile.status || 'us-md';
     const status2 = user2Profile.status || 'us-md';
 

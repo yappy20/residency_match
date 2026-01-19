@@ -1,5 +1,6 @@
 import { specialties, getCorrelation } from '../data/specialties';
 import { getAllHospitals } from '../data/hospitals';
+import { OVERALL_STATISTICS_2025 } from '../data/nrmpData2025';
 
 const TOTAL_HOSPITALS = 800;
 
@@ -9,7 +10,7 @@ const TOTAL_HOSPITALS = 800;
 const MATCH_STATISTICS = {
   // Overall couples match rate: 93.2% in 2025 (from Table 14, Advance Data Tables 2025)
   // 89.1% of couples achieved BOTH partners matching when coordinated rankings used
-  couplesMatchBaseRate: 0.932, // Updated to 93.2% from 2025 NRMP data
+  couplesMatchBaseRate: OVERALL_STATISTICS_2025.couples.overallMatchRate, // 93.2% from 2025 NRMP data
 
   // Competitive specialties have lower match rates
   // Match rates adjusted by specialty competitiveness
