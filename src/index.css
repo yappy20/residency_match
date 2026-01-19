@@ -13,11 +13,19 @@ body {
   background: #C6D4FF;
   min-height: 100vh;
   padding: 10px;
+  color: #333;
 }
 
 @media (min-width: 768px) {
   body {
     padding: 20px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
   }
 }
 

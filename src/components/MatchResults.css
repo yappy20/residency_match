@@ -305,3 +305,141 @@
         margin-top: 10px;
     }
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .match-results {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+
+    .match-results h2 {
+        color: #e0e0e0;
+    }
+
+    .match-detail-card {
+        background: #3a3a3a;
+    }
+
+    .match-detail-card h3 {
+        color: #e0e0e0;
+    }
+
+    .hospital-name-large {
+        color: #e0e0e0;
+    }
+
+    .hospital-location-large {
+        color: #bbb;
+    }
+
+    .stat-item {
+        background: #2d2d2d;
+    }
+
+    .stat-label {
+        color: #bbb;
+    }
+
+    .stat-value {
+        color: #e0e0e0;
+    }
+
+    .top-pairs-section h3 {
+        color: #e0e0e0;
+    }
+
+    .pair-item {
+        background: #3a3a3a;
+        border-left-color: #7A82AB;
+    }
+
+    .pair-item.matched-pair {
+        background: #1e3a2e;
+    }
+
+    .pair-hospital-name {
+        color: #e0e0e0;
+    }
+
+    .pair-hospital-location {
+        color: #bbb;
+    }
+
+    .best-pair-section {
+        background: #3a3510;
+        border-left-color: #ffc107;
+    }
+
+    .best-pair-section h3 {
+        color: #ffd700;
+    }
+
+    .best-pair-hospital {
+        background: #2d2d2d;
+    }
+
+    .best-pair-connector {
+        color: #ffd700;
+    }
+
+    .best-pair-probability {
+        color: #ffd700;
+    }
+
+    .preferred-hospital-section {
+        background: #2d2d2d;
+    }
+
+    .preferred-hospital-section h3 {
+        color: #e0e0e0;
+    }
+
+    .preferred-hospital-same,
+    .preferred-hospital-single,
+    .preferred-hospital-different {
+        background: #3a3a3a;
+    }
+
+    .preferred-hospital-name,
+    .hospital-name-medium {
+        color: #e0e0e0;
+    }
+
+    .preferred-hospital-location,
+    .hospital-location-medium {
+        color: #bbb;
+    }
+
+    .preferred-hospital-note {
+        color: #bbb;
+    }
+
+    .preferred-hospital-probabilities .prob-label {
+        color: #bbb;
+    }
+
+    .preferred-hospital-probabilities .prob-value {
+        color: #2DC2BD;
+    }
+
+    .preferred-hospital-combined .prob-label {
+        color: #bbb;
+    }
+
+    .preferred-hospital-combined .prob-value {
+        color: #2DC2BD;
+    }
+
+    .preferred-hospital-message {
+        background: #2d2d2d;
+    }
+
+    .preferred-hospital-message h3 {
+        color: #e0e0e0;
+    }
+
+    .preferred-hospital-message p {
+        color: #bbb;
+    }
+}

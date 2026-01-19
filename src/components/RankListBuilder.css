@@ -283,3 +283,112 @@
         margin-bottom: 6px;
     }
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .rank-list-builder {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+
+    .rank-list-builder h3 {
+        color: #e0e0e0;
+    }
+
+    .warning-message {
+        background: #3a3510;
+        border-left-color: #ffc107;
+        color: #ffd700;
+    }
+
+    .toggle-search-btn {
+        background: #3a3a4e;
+        color: #2DC2BD;
+        border-color: #7A82AB;
+    }
+
+    .search-results {
+        background: #3a3a3a;
+        border-color: #555;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-result-item {
+        border-bottom-color: #444;
+    }
+
+    .search-result-item:hover {
+        background: #4a4a4a;
+    }
+
+    .result-name {
+        color: #e0e0e0;
+    }
+
+    .result-location {
+        color: #bbb;
+    }
+
+    .available-hospitals-section h4 {
+        color: #e0e0e0;
+    }
+
+    .available-hospitals-list {
+        background: #3a3a3a;
+    }
+
+    .available-hospital-item {
+        background: #2d2d2d;
+        border-color: #555;
+    }
+
+    .available-hospital-item.added {
+        background: #1e3a2e;
+        border-color: #4caf50;
+    }
+
+    .hospital-name {
+        color: #e0e0e0;
+    }
+
+    .hospital-location {
+        color: #bbb;
+    }
+
+    .more-hospitals {
+        color: #bbb;
+    }
+
+    .rank-list-section h4 {
+        color: #e0e0e0;
+    }
+
+    .empty-rank-list {
+        color: #999;
+        background: #3a3a3a;
+        border-color: #555;
+    }
+
+    .rank-list-item {
+        background: #3a3a3a;
+    }
+
+    .rank-list-item:hover {
+        background: #4a4a4a;
+    }
+
+    .rank-hospital-name {
+        color: #e0e0e0;
+    }
+
+    .rank-hospital-location {
+        color: #bbb;
+    }
+
+    .move-btn,
+    .remove-btn {
+        background: #2d2d2d;
+        border-color: #555;
+        color: #e0e0e0;
+    }
+}

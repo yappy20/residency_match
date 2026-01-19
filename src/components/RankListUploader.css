@@ -215,3 +215,98 @@
     color: #666;
     font-size: 0.9rem;
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .rank-list-uploader {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+
+    .rank-list-uploader h4 {
+        color: #e0e0e0;
+    }
+
+    .upload-instructions {
+        background: #3a3a3a;
+    }
+
+    .upload-instructions p {
+        color: #e0e0e0;
+    }
+
+    .upload-instructions ol {
+        color: #bbb;
+    }
+
+    .instruction-note {
+        color: #999 !important;
+    }
+
+    .text-input-hint,
+    .file-note,
+    .upload-hint {
+        color: #999;
+    }
+
+    .upload-section {
+        border-top-color: #555;
+    }
+
+    .upload-section-label {
+        color: #e0e0e0;
+    }
+
+    .file-upload-button {
+        background: #3a3a4e;
+        color: #2DC2BD;
+        border-color: #7A82AB;
+    }
+
+    .file-info {
+        background: #1e3a2e;
+        border-left-color: #4caf50;
+    }
+
+    .file-name {
+        color: #4caf50;
+    }
+
+    .text-input-section label {
+        color: #e0e0e0;
+    }
+
+    .text-input-area {
+        background: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+    .upload-error {
+        background: #3a1e1e;
+        border-left-color: #dc3545;
+        color: #ff6b6b;
+    }
+
+    .upload-warning {
+        background: #3a3510;
+        border-left-color: #ffc107;
+        color: #ffd700;
+    }
+
+    .parsed-hospitals h5 {
+        color: #e0e0e0;
+    }
+
+    .parsed-hospital-item {
+        background: #3a3a3a;
+    }
+
+    .parsed-name {
+        color: #e0e0e0;
+    }
+
+    .parsed-location {
+        color: #bbb;
+    }
+}
