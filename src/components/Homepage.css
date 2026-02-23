@@ -50,12 +50,12 @@
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(16, 37, 66, 0.15);
+  box-shadow: 0 4px 14px rgba(44, 74, 107, 0.12);
 }
 
 .homepage-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 37, 66, 0.2);
+  box-shadow: 0 6px 20px rgba(44, 74, 107, 0.15);
 }
 
 .homepage-cta:active {
@@ -99,7 +99,7 @@
 
 .homepage-feature-card:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 8px 24px rgba(16, 37, 66, 0.12);
+  box-shadow: 0 8px 24px rgba(44, 74, 107, 0.1);
   transform: translateY(-4px);
 }
 
@@ -110,7 +110,7 @@
 .homepage-feature-card:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(16, 37, 66, 0.15);
+  box-shadow: 0 0 0 3px rgba(44, 74, 107, 0.12);
 }
 
 .homepage-feature-icon {

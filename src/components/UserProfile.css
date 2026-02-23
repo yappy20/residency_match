@@ -164,7 +164,7 @@
 .form-input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(16, 37, 66, 0.15);
+    box-shadow: 0 0 0 3px rgba(44, 74, 107, 0.12);
 }
 
 .form-input::placeholder {
@@ -216,7 +216,7 @@ select.form-input {
     padding: 0;
     margin: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(16, 37, 66, 0.12);
+    box-shadow: 0 4px 12px rgba(44, 74, 107, 0.1);
 }
 
 .autocomplete-suggestions li {

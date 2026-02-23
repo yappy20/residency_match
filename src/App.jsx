@@ -13,6 +13,16 @@ import './App.css'
 function App() {
   const [showHomepage, setShowHomepage] = useState(true)
   const [activeTab, setActiveTab] = useState('simple') // 'simple', 'nrmp', or 'individual'
+  const [theme, setTheme] = useState('light') // 'light' | 'dark' | 'system'
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (theme === 'system') {
+      root.removeAttribute('data-theme')
+    } else {
+      root.setAttribute('data-theme', theme)
+    }
+  }, [theme])
 
   // Couple match calculator state
   const [specialty1, setSpecialty1] = useState('')
@@ -197,9 +207,39 @@ function App() {
     }))
   }
 
+  const themeSwitcher = (
+    <div className="theme-switcher" role="group" aria-label="Theme">
+      <button
+        type="button"
+        className={theme === 'light' ? 'active' : ''}
+        onClick={() => setTheme('light')}
+        aria-pressed={theme === 'light'}
+      >
+        Light
+      </button>
+      <button
+        type="button"
+        className={theme === 'dark' ? 'active' : ''}
+        onClick={() => setTheme('dark')}
+        aria-pressed={theme === 'dark'}
+      >
+        Dark
+      </button>
+      <button
+        type="button"
+        className={theme === 'system' ? 'active' : ''}
+        onClick={() => setTheme('system')}
+        aria-pressed={theme === 'system'}
+      >
+        System
+      </button>
+    </div>
+  )
+
   if (showHomepage) {
     return (
       <div className="app">
+        <div className="theme-switcher-wrap">{themeSwitcher}</div>
         <Homepage
           onGetStarted={() => setShowHomepage(false)}
           onSelectTab={(tab) => {
@@ -213,6 +253,7 @@ function App() {
 
   return (
     <div className="app">
+      <div className="theme-switcher-wrap">{themeSwitcher}</div>
       <div className="container">
         <header className="header">
           <button

@@ -1,21 +1,21 @@
-/* Prussian Blue, Vibrant Coral, Alabaster Grey, Khaki Beige, White */
+/* Light mode: soft, easy on the eyes */
 :root {
-  --color-primary: #102542;       /* Prussian Blue */
-  --color-primary-light: #F87060; /* Vibrant Coral – hover */
-  --color-primary-dark: #0a1a30;
-  --color-accent: #F87060;        /* Vibrant Coral */
-  --color-muted: #B3A394;        /* Khaki Beige */
-  --color-muted-light: #CDD7D6;  /* Alabaster Grey */
-  --color-background: #CDD7D6;    /* Alabaster Grey */
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #e5e8e7;
-  --color-border: #B3A394;       /* Khaki Beige */
-  --color-text: #102542;         /* Prussian Blue */
-  --color-text-muted: #5c6b7a;
-  --color-success: #102542;
-  --color-warning: #B3A394;
-  --color-warning-bg: #f5f0eb;
-  --color-error: #dc2626;
+  --color-primary: #2c4a6b;       /* Softer navy */
+  --color-primary-light: #e07a6b; /* Softer coral hover */
+  --color-primary-dark: #1a3550;
+  --color-accent: #e07a6b;
+  --color-muted: #9c8b7a;        /* Softer khaki */
+  --color-muted-light: #d5d9d8;
+  --color-background: #f2f0ed;    /* Warm off-white */
+  --color-surface: #fdfcfa;
+  --color-surface-alt: #ebe8e4;
+  --color-border: #d4cfc8;        /* Soft warm grey */
+  --color-text: #3d4f5c;         /* Soft slate, not harsh */
+  --color-text-muted: #6b7c89;
+  --color-success: #2c4a6b;
+  --color-warning: #9c8b7a;
+  --color-warning-bg: #f8f5f1;
+  --color-error: #c53030;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +35,43 @@
     --color-warning-bg: #2a3d52;
     --color-warning: #F87060;
   }
+}
+
+/* Manual theme override – light: soft, easy on eyes */
+html[data-theme="light"] {
+  --color-primary: #2c4a6b;
+  --color-primary-light: #e07a6b;
+  --color-primary-dark: #1a3550;
+  --color-accent: #e07a6b;
+  --color-muted: #9c8b7a;
+  --color-muted-light: #d5d9d8;
+  --color-background: #f2f0ed;
+  --color-surface: #fdfcfa;
+  --color-surface-alt: #ebe8e4;
+  --color-border: #d4cfc8;
+  --color-text: #3d4f5c;
+  --color-text-muted: #6b7c89;
+  --color-success: #2c4a6b;
+  --color-warning: #9c8b7a;
+  --color-warning-bg: #f8f5f1;
+  --color-error: #c53030;
+}
+
+html[data-theme="dark"] {
+  --color-background: #102542;
+  --color-surface: #1a3560;
+  --color-surface-alt: #244670;
+  --color-border: #3d5a80;
+  --color-text: #FFFFFF;
+  --color-text-muted: #CDD7D6;
+  --color-primary: #F87060;
+  --color-primary-light: #ff8a7d;
+  --color-primary-dark: #e65a4d;
+  --color-accent: #F87060;
+  --color-muted: #CDD7D6;
+  --color-muted-light: #e5e8e7;
+  --color-warning-bg: #2a3d52;
+  --color-warning: #F87060;
 }
 
 * {
