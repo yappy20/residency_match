@@ -3,6 +3,7 @@ import { specialties } from './data/specialties'
 import { calculateMatchProbability, getTopHospitals, calculateHospitalMatchProbability } from './utils/calculateMatch'
 import { searchHospitals, getAllHospitals } from './data/hospitals'
 import { calculateIndividualMatchProbability } from './utils/nrmpMatch'
+import { Homepage } from './components/Homepage'
 import { UserProfile } from './components/UserProfile'
 import { RankListBuilder } from './components/RankListBuilder'
 import { RankListUploader } from './components/RankListUploader'
@@ -10,6 +11,7 @@ import { MatchResults } from './components/MatchResults'
 import './App.css'
 
 function App() {
+  const [showHomepage, setShowHomepage] = useState(true)
   const [activeTab, setActiveTab] = useState('simple') // 'simple', 'nrmp', or 'individual'
 
   // Couple match calculator state
@@ -195,10 +197,32 @@ function App() {
     }))
   }
 
+  if (showHomepage) {
+    return (
+      <div className="app">
+        <Homepage
+          onGetStarted={() => setShowHomepage(false)}
+          onSelectTab={(tab) => {
+            setActiveTab(tab)
+            setShowHomepage(false)
+          }}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="app">
       <div className="container">
         <header className="header">
+          <button
+            type="button"
+            className="header-home-link"
+            onClick={() => setShowHomepage(true)}
+            aria-label="Back to home"
+          >
+            ← Home
+          </button>
           <h1>Residency Match Calculator</h1>
           <p className="subtitle">
             Using data from nearly a decade of post-Match results, estimate your probability of matching

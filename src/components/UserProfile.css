@@ -1,9 +1,9 @@
 .user-profile-form {
-    background: white;
+    background: var(--color-surface);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border);
 }
 
 @media (min-width: 768px) {
@@ -29,7 +29,7 @@
 }
 
 .user-profile-form h3 {
-    color: #333;
+    color: var(--color-text);
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
@@ -39,9 +39,9 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid #2DC2BD;
-    background: white;
-    color: #2DC2BD;
+    border: 2px solid var(--color-primary);
+    background: var(--color-surface);
+    color: var(--color-primary);
     font-size: 24px;
     font-weight: 300;
     line-height: 1;
@@ -62,7 +62,7 @@
     right: 0;
     margin-bottom: 8px;
     padding: 6px 10px;
-    background: #333;
+    background: var(--color-text);
     color: white;
     font-size: 0.85rem;
     font-weight: 400;
@@ -81,7 +81,7 @@
     right: 12px;
     margin-bottom: 2px;
     border: 5px solid transparent;
-    border-top-color: #333;
+    border-top-color: var(--color-text);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0s;
@@ -95,7 +95,7 @@
 }
 
 .upload-plus-button:hover {
-    background: #2DC2BD;
+    background: var(--color-primary);
     color: white;
     transform: scale(1.1);
 }
@@ -133,7 +133,7 @@
 }
 
 .form-field label {
-    color: #333;
+    color: var(--color-text);
     font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 6px;
@@ -142,7 +142,7 @@
 }
 
 .required {
-    color: #dc3545;
+    color: var(--color-error);
     font-weight: 700;
 }
 
@@ -150,27 +150,31 @@
     width: 100%;
     padding: 8px 12px;
     font-size: 0.95rem;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    background: white;
-    color: #333;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: var(--color-text);
     transition: all 0.2s ease;
+}
+
+.form-input:hover {
+    border-color: var(--color-muted);
 }
 
 .form-input:focus {
     outline: none;
-    border-color: #2DC2BD;
-    box-shadow: 0 0 0 2px rgba(45, 194, 189, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 37, 66, 0.15);
 }
 
 .form-input::placeholder {
-    color: #999;
+    color: var(--color-text-muted);
 }
 
 select.form-input {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23102542' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     padding-right: 35px;
@@ -202,25 +206,25 @@ select.form-input {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #d0d0d0;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
     border-top: none;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 6px 6px;
     max-height: 200px;
     overflow-y: auto;
     list-style: none;
     padding: 0;
     margin: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 37, 66, 0.12);
 }
 
 .autocomplete-suggestions li {
     padding: 10px 12px;
     cursor: pointer;
     font-size: 0.95rem;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
     transition: background-color 0.15s ease;
 }
 
@@ -230,12 +234,12 @@ select.form-input {
 
 .autocomplete-suggestions li:hover,
 .autocomplete-suggestions li.selected {
-    background-color: #f0f9ff;
-    color: #2DC2BD;
+    background-color: var(--color-surface-alt);
+    color: var(--color-primary);
 }
 
 .autocomplete-suggestions li:active {
-    background-color: #e0f7f5;
+    background-color: var(--color-border);
 }
 
 /* International Applicant Toggle */
@@ -250,7 +254,7 @@ select.form-input {
 .toggle-text {
     font-size: 0.85rem;
     font-weight: 500;
-    color: #333;
+    color: var(--color-text);
     white-space: nowrap;
 }
 
@@ -284,7 +288,7 @@ select.form-input {
 }
 
 .toggle-switch:checked + .toggle-slider {
-    background-color: #2DC2BD;
+    background-color: var(--color-primary);
 }
 
 .toggle-switch:checked + .toggle-slider::before {
@@ -298,74 +302,78 @@ select.form-input {
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
     .user-profile-form {
-        background: #2d2d2d;
-        border-color: #444;
+        background: var(--color-surface);
+        border-color: var(--color-border);
     }
 
     .user-profile-form h3 {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .form-field label {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .form-input {
-        background: #3a3a3a;
-        color: #e0e0e0;
-        border-color: #555;
+        background: var(--color-surface);
+        color: var(--color-text);
+        border-color: var(--color-border);
+    }
+
+    .form-input:hover {
+        border-color: var(--color-muted);
     }
 
     .form-input:focus {
-        border-color: #2DC2BD;
-        box-shadow: 0 0 0 2px rgba(45, 194, 189, 0.2);
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(248, 112, 96, 0.25);
     }
 
     .form-input::placeholder {
-        color: #888;
+        color: var(--color-text-muted);
     }
 
     .autocomplete-suggestions {
-        background: #3a3a3a;
-        border-color: #555;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        background: var(--color-surface);
+        border-color: var(--color-border);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .autocomplete-suggestions li {
-        color: #e0e0e0;
-        border-bottom-color: #444;
+        color: var(--color-text);
+        border-bottom-color: var(--color-border);
     }
 
     .autocomplete-suggestions li:hover,
     .autocomplete-suggestions li.selected {
-        background-color: #4a4a5e;
-        color: #2DC2BD;
+        background-color: var(--color-surface-alt);
+        color: var(--color-primary);
     }
 
     .autocomplete-suggestions li:active {
-        background-color: #5a5a6e;
+        background-color: var(--color-border);
     }
 
     .toggle-text {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .upload-plus-button {
-        background: #2d2d2d;
-        border-color: #2DC2BD;
-        color: #2DC2BD;
+        background: var(--color-surface);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
     }
 
     .upload-plus-button::before {
-        background: #444;
-        color: #e0e0e0;
+        background: var(--color-surface-alt);
+        color: var(--color-text);
     }
 
     .upload-plus-button::after {
-        border-top-color: #444;
+        border-top-color: var(--color-surface-alt);
     }
 
     select.form-input {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23CDD7D6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     }
 }

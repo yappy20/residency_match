@@ -1,3 +1,42 @@
+/* Prussian Blue, Vibrant Coral, Alabaster Grey, Khaki Beige, White */
+:root {
+  --color-primary: #102542;       /* Prussian Blue */
+  --color-primary-light: #F87060; /* Vibrant Coral – hover */
+  --color-primary-dark: #0a1a30;
+  --color-accent: #F87060;        /* Vibrant Coral */
+  --color-muted: #B3A394;        /* Khaki Beige */
+  --color-muted-light: #CDD7D6;  /* Alabaster Grey */
+  --color-background: #CDD7D6;    /* Alabaster Grey */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #e5e8e7;
+  --color-border: #B3A394;       /* Khaki Beige */
+  --color-text: #102542;         /* Prussian Blue */
+  --color-text-muted: #5c6b7a;
+  --color-success: #102542;
+  --color-warning: #B3A394;
+  --color-warning-bg: #f5f0eb;
+  --color-error: #dc2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #102542;   /* Prussian Blue */
+    --color-surface: #1a3560;
+    --color-surface-alt: #244670;
+    --color-border: #3d5a80;
+    --color-text: #FFFFFF;
+    --color-text-muted: #CDD7D6;  /* Alabaster Grey */
+    --color-primary: #F87060;     /* Vibrant Coral */
+    --color-primary-light: #ff8a7d;
+    --color-primary-dark: #e65a4d;
+    --color-accent: #F87060;
+    --color-muted: #CDD7D6;
+    --color-muted-light: #e5e8e7;
+    --color-warning-bg: #2a3d52;
+    --color-warning: #F87060;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,22 +49,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #C6D4FF;
+  background: var(--color-background);
   min-height: 100vh;
   padding: 10px;
-  color: #333;
+  color: var(--color-text);
 }
 
 @media (min-width: 768px) {
   body {
     padding: 20px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1a1a2e;
-    color: #e0e0e0;
   }
 }
 

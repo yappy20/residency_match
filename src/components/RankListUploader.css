@@ -1,36 +1,36 @@
 .rank-list-uploader {
-    background: white;
+    background: var(--color-surface);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border);
 }
 
 .rank-list-uploader h4 {
-    color: #333;
+    color: var(--color-text);
     margin-bottom: 15px;
     font-size: 1.1rem;
     font-weight: 600;
 }
 
 .upload-instructions {
-    background: #f8f9fa;
+    background: var(--color-surface-alt);
     padding: 15px;
     border-radius: 6px;
     margin-bottom: 15px;
-    border-left: 3px solid #2DC2BD;
+    border-left: 3px solid var(--color-primary);
 }
 
 .upload-instructions p {
     margin: 0 0 10px 0;
-    color: #333;
+    color: var(--color-text);
     font-size: 0.95rem;
 }
 
 .upload-instructions ol {
     margin: 10px 0;
     padding-left: 20px;
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .upload-instructions li {
@@ -42,21 +42,21 @@
 .instruction-note {
     margin-top: 10px !important;
     font-size: 0.85rem !important;
-    color: #666 !important;
+    color: var(--color-text-muted) !important;
     font-style: italic;
 }
 
 .text-input-hint {
     margin-top: 8px;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
 .file-note {
     margin-top: 5px;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -64,19 +64,19 @@
     margin-top: 20px;
     margin-bottom: 15px;
     padding-top: 15px;
-    border-top: 2px dashed #e0e0e0;
+    border-top: 2px dashed var(--color-border);
 }
 
 .upload-section-label {
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-text);
     font-size: 0.95rem;
 }
 
 .upload-hint {
     margin-top: 10px;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -92,18 +92,18 @@
 .file-upload-button {
     display: inline-block;
     padding: 10px 20px;
-    background: #C6D4FF;
-    color: #2DC2BD;
-    border: 2px solid #7A82AB;
+    background: var(--color-surface-alt);
+    color: var(--color-primary);
+    border: 2px solid var(--color-muted);
     border-radius: 6px;
     font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .file-upload-button:hover {
-    background: #2DC2BD;
+    background: var(--color-primary);
     color: white;
-    border-color: #2DC2BD;
+    border-color: var(--color-primary);
 }
 
 .file-info {
@@ -127,7 +127,7 @@
 
 .text-input-section label {
     display: block;
-    color: #333;
+    color: var(--color-text);
     font-weight: 500;
     margin-bottom: 8px;
     font-size: 0.95rem;
@@ -136,7 +136,7 @@
 .text-input-area {
     width: 100%;
     padding: 12px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-border);
     border-radius: 6px;
     font-size: 0.95rem;
     font-family: inherit;
@@ -146,7 +146,7 @@
 
 .text-input-area:focus {
     outline: none;
-    border-color: #2DC2BD;
+    border-color: var(--color-primary);
     box-shadow: 0 0 0 2px rgba(45, 194, 189, 0.1);
 }
 
@@ -175,7 +175,7 @@
 }
 
 .parsed-hospitals h5 {
-    color: #333;
+    color: var(--color-text);
     margin-bottom: 10px;
     font-size: 1rem;
     font-weight: 600;
@@ -193,120 +193,117 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    background: #f8f9fa;
+    background: var(--color-surface-alt);
     border-radius: 6px;
-    border-left: 3px solid #12664F;
+    border-left: 3px solid var(--color-primary-dark);
     gap: 10px;
 }
 
 .parsed-rank {
     font-weight: 700;
-    color: #307473;
+    color: var(--color-primary-dark);
     min-width: 40px;
 }
 
 .parsed-name {
     flex: 1;
     font-weight: 600;
-    color: #333;
+    color: var(--color-text);
 }
 
 .parsed-location {
-    color: #666;
+    color: var(--color-text-muted);
     font-size: 0.9rem;
 }
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
     .rank-list-uploader {
-        background: #2d2d2d;
-        border-color: #444;
+        background: var(--color-surface);
+        border-color: var(--color-border);
     }
 
     .rank-list-uploader h4 {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .upload-instructions {
-        background: #3a3a3a;
+        background: var(--color-surface-alt);
     }
 
     .upload-instructions p {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .upload-instructions ol {
-        color: #bbb;
+        color: var(--color-text-muted);
     }
 
-    .instruction-note {
-        color: #999 !important;
-    }
-
+    .instruction-note,
     .text-input-hint,
     .file-note,
     .upload-hint {
-        color: #999;
+        color: var(--color-text-muted) !important;
     }
 
     .upload-section {
-        border-top-color: #555;
+        border-top-color: var(--color-border);
     }
 
     .upload-section-label {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .file-upload-button {
-        background: #3a3a4e;
-        color: #2DC2BD;
-        border-color: #7A82AB;
+        background: var(--color-surface-alt);
+        color: var(--color-primary);
+        border-color: var(--color-muted);
     }
 
     .file-info {
-        background: #1e3a2e;
-        border-left-color: #4caf50;
+        background: var(--color-surface-alt);
+        border-left-color: var(--color-success);
     }
 
     .file-name {
-        color: #4caf50;
+        color: var(--color-success);
     }
 
     .text-input-section label {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .text-input-area {
-        background: #2d2d2d;
-        color: #e0e0e0;
-        border-color: #555;
+        background: var(--color-surface);
+        color: var(--color-text);
+        border-color: var(--color-border);
     }
 
     .upload-error {
-        background: #3a1e1e;
-        border-left-color: #dc3545;
-        color: #ff6b6b;
+        background: var(--color-surface-alt);
+        border-left-color: var(--color-error);
+        color: var(--color-error);
     }
 
     .upload-warning {
-        background: #3a3510;
-        border-left-color: #ffc107;
-        color: #ffd700;
+        background: var(--color-warning-bg);
+        border-left-color: var(--color-warning);
+        color: var(--color-warning);
     }
 
     .parsed-hospitals h5 {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .parsed-hospital-item {
-        background: #3a3a3a;
+        background: var(--color-surface-alt);
     }
 
     .parsed-name {
-        color: #e0e0e0;
+        color: var(--color-text);
     }
 
     .parsed-location {
-        color: #bbb;
+        color: var(--color-text-muted);
     }
 }
